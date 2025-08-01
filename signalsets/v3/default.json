@@ -1,9 +1,11 @@
-{ "commands": [
-
-]
-}
-
-      "cmd": {"22": "C2"},
+{
+  "commands": [
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {
+        "22": "C2"
+      },
       "freq": 0.1,
       "signals": [
         {
@@ -31,7 +33,9 @@
     {
       "hdr": "7E0",
       "rsp": "7E8",
-      "cmd": {"22": "14A"},
+      "cmd": {
+        "22": "14A"
+      },
       "freq": 0.1,
       "signals": [
         {
@@ -49,7 +53,29 @@
     {
       "hdr": "7E0",
       "rsp": "7E8",
-      "cmd": {"22": "242"},
+      "cmd": {
+        "22": "44C"
+      },
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_VEHICLE_SPEED_SPEEDO",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 0.01,
+            "unit": "kph"
+          },
+          "name": "Vehicle Speed (Speedometer)"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {
+        "22": "242"
+      },
       "freq": 0.1,
       "signals": [
         {
@@ -77,7 +103,9 @@
     {
       "hdr": "7E0",
       "rsp": "7E8",
-      "cmd": {"22": "245"},
+      "cmd": {
+        "22": "245"
+      },
       "freq": 0.1,
       "signals": [
         {
@@ -96,7 +124,9 @@
     {
       "hdr": "7E0",
       "rsp": "7E8",
-      "cmd": {"22": "246"},
+      "cmd": {
+        "22": "246"
+      },
       "freq": 0.1,
       "signals": [
         {
@@ -114,7 +144,9 @@
     {
       "hdr": "7E0",
       "rsp": "7E8",
-      "cmd": {"22": "24A"},
+      "cmd": {
+        "22": "24A"
+      },
       "freq": 0.1,
       "signals": [
         {
@@ -162,18 +194,29 @@
     {
       "hdr": "7E0",
       "rsp": "7E8",
-      "cmd": {"22": "308"},
+      "cmd": {
+        "22": "308"
+      },
       "freq": 0.1,
       "signals": [
         {
           "id": "PORSCHE_SPORT_MODE",
           "fmt": {
             "len": 64,
-            "type": "enum",
-            "values": {
-              "0": "Both Off",
-              "1": "Sport",
-              "2": "Sport Plus"
+            "max": 2,
+            "map": {
+              "0": {
+                "value": "Both Off",
+                "description": "Both Sport and Sport Plus modes are off"
+              },
+              "1": {
+                "value": "Sport",
+                "description": "Sport mode is active"
+              },
+              "2": {
+                "value": "Sport Plus",
+                "description": "Sport Plus mode is active"
+              }
             }
           },
           "name": "Sport/Sport Plus Mode"
@@ -183,7 +226,137 @@
     {
       "hdr": "7E0",
       "rsp": "7E8",
-      "cmd": {"22": "441"},
+      "cmd": {
+        "22": "442"
+      },
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_PASM_MODE",
+          "fmt": {
+            "len": 32,
+            "max": 1,
+            "map": {
+              "0": {
+                "value": "Soft",
+                "description": "PASM suspension in soft mode"
+              },
+              "1": {
+                "value": "Sport",
+                "description": "PASM suspension in sport mode"
+              }
+            }
+          },
+          "name": "PASM Suspension Mode"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {
+        "22": "F431"
+      },
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_CLR_DIST",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 1,
+            "unit": "km"
+          },
+          "name": "Clear Distance"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {
+        "22": "F430"
+      },
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_WARM_UPS",
+          "fmt": {
+            "len": 8,
+            "max": 255,
+            "mul": 1,
+            "unit": "count"
+          },
+          "name": "Warm-ups Since Codes Cleared"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {
+        "22": "F421"
+      },
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_MIL_DIST",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 1,
+            "unit": "km"
+          },
+          "name": "Distance Traveled with MIL on"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {
+        "22": "F41F"
+      },
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_RUNTM",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 1,
+            "unit": "seconds"
+          },
+          "name": "Run Time Since Engine Start"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {
+        "22": "F442"
+      },
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_VPWR",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 0.001,
+            "unit": "V"
+          },
+          "name": "Vehicle Power"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {
+        "22": "441"
+      },
       "freq": 0.1,
       "signals": [
         {
@@ -201,38 +374,20 @@
     {
       "hdr": "7E0",
       "rsp": "7E8",
-      "cmd": {"22": "442"},
+      "cmd": {
+        "22": "F40D"
+      },
       "freq": 0.1,
       "signals": [
         {
-          "id": "PORSCHE_PASM_MODE",
+          "id": "PORSCHE_VSS",
           "fmt": {
-            "len": 32,
-            "type": "enum",
-            "values": {
-              "0": "Soft",
-              "1": "Sport"
-            }
-          },
-          "name": "PASM Suspension Mode"
-        }
-      ]
-    },
-    {
-      "hdr": "7E0",
-      "rsp": "7E8",
-      "cmd": {"22": "44C"},
-      "freq": 0.1,
-      "signals": [
-        {
-          "id": "PORSCHE_VEHICLE_SPEED_SPEEDO",
-          "fmt": {
-            "len": 16,
-            "max": 65535,
-            "mul": 0.01,
+            "len": 8,
+            "max": 255,
+            "mul": 1,
             "unit": "kph"
           },
-          "name": "Vehicle Speed (Speedometer)"
+          "name": "Vehicle Speed Sensor"
         }
       ]
     }
