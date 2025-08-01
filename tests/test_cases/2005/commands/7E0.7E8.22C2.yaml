@@ -1,0 +1,43 @@
+# Steering Angle and Rate Test Cases
+# PID: 0xC2 (194 decimal)
+# Command: 7E0 22 C2
+# Response: 7E8 62 C2 [data]
+
+test_cases:
+  - name: "Steering Angle - Center Position"
+    request: "7E0 22 C2"
+    response: "7E8 62 C2 00 00 00 00 00 00 00 00"
+    expected:
+      steering_angle: 0.0
+      steering_rate: 0.0
+      unit: "degrees"
+
+  - name: "Steering Angle - Left Turn"
+    request: "7E0 22 C2"
+    response: "7E8 62 C2 44 01 00 00 00 00 00 00"
+    expected:
+      steering_angle: 324.0
+      steering_rate: 0.0
+      unit: "degrees"
+
+  - name: "Steering Angle - Right Turn"
+    request: "7E0 22 C2"
+    response: "7E8 62 C2 BC FE 00 00 00 00 00 00"
+    expected:
+      steering_angle: -324.0
+      steering_rate: 0.0
+      unit: "degrees"
+
+  - name: "Steering Rate - Turning Left"
+    request: "7E0 22 C2"
+    response: "7E8 62 C2 00 00 20 00 00 00 00 00"
+    expected:
+      steering_angle: 0.0
+      steering_rate: 14.4
+      unit: "degreesPerSecond"
+
+notes:
+  - "Steering angle uses bytes 0-1, little endian, signed"
+  - "Steering rate uses bytes 2-3, little endian, signed"
+  - "Multiplier is 0.045 degrees per unit"
+  - "Range is approximately ±540 degrees"

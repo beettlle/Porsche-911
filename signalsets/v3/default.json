@@ -2,3 +2,239 @@
 
 ]
 }
+
+      "cmd": {"22": "C2"},
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_STEERING_ANGLE",
+          "fmt": {
+            "len": 16,
+            "max": 32767,
+            "mul": 0.045,
+            "unit": "degrees"
+          },
+          "name": "Steering Angle"
+        },
+        {
+          "id": "PORSCHE_STEERING_RATE",
+          "fmt": {
+            "len": 16,
+            "max": 32767,
+            "mul": 0.045,
+            "unit": "degreesPerSecond"
+          },
+          "name": "Steering Rate of Change"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {"22": "14A"},
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_VEHICLE_SPEED_GPS",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 0.01,
+            "unit": "kph"
+          },
+          "name": "Vehicle Speed (GPS)"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {"22": "242"},
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_ENGINE_RPM",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 0.25,
+            "unit": "rpm"
+          },
+          "name": "Engine RPM"
+        },
+        {
+          "id": "PORSCHE_THROTTLE_ACTUAL",
+          "fmt": {
+            "len": 8,
+            "max": 255,
+            "mul": 0.392,
+            "unit": "percent"
+          },
+          "name": "Throttle Position (Actual)"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {"22": "245"},
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_COOLANT_TEMP",
+          "fmt": {
+            "len": 8,
+            "max": 255,
+            "mul": 0.75,
+            "offset": -48,
+            "unit": "celsius"
+          },
+          "name": "Engine Coolant Temperature"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {"22": "246"},
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_THROTTLE_PEDAL",
+          "fmt": {
+            "len": 8,
+            "max": 255,
+            "mul": 0.392,
+            "unit": "percent"
+          },
+          "name": "Throttle Pedal Position"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {"22": "24A"},
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_WHEEL_SPEED_LF",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 0.01,
+            "unit": "kph"
+          },
+          "name": "Wheel Speed Front Left"
+        },
+        {
+          "id": "PORSCHE_WHEEL_SPEED_RF",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 0.01,
+            "unit": "kph"
+          },
+          "name": "Wheel Speed Front Right"
+        },
+        {
+          "id": "PORSCHE_WHEEL_SPEED_LR",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 0.01,
+            "unit": "kph"
+          },
+          "name": "Wheel Speed Rear Left"
+        },
+        {
+          "id": "PORSCHE_WHEEL_SPEED_RR",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 0.01,
+            "unit": "kph"
+          },
+          "name": "Wheel Speed Rear Right"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {"22": "308"},
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_SPORT_MODE",
+          "fmt": {
+            "len": 64,
+            "type": "enum",
+            "values": {
+              "0": "Both Off",
+              "1": "Sport",
+              "2": "Sport Plus"
+            }
+          },
+          "name": "Sport/Sport Plus Mode"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {"22": "441"},
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_OIL_TEMP",
+          "fmt": {
+            "len": 8,
+            "max": 255,
+            "offset": -60,
+            "unit": "celsius"
+          },
+          "name": "Engine Oil Temperature"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {"22": "442"},
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_PASM_MODE",
+          "fmt": {
+            "len": 32,
+            "type": "enum",
+            "values": {
+              "0": "Soft",
+              "1": "Sport"
+            }
+          },
+          "name": "PASM Suspension Mode"
+        }
+      ]
+    },
+    {
+      "hdr": "7E0",
+      "rsp": "7E8",
+      "cmd": {"22": "44C"},
+      "freq": 0.1,
+      "signals": [
+        {
+          "id": "PORSCHE_VEHICLE_SPEED_SPEEDO",
+          "fmt": {
+            "len": 16,
+            "max": 65535,
+            "mul": 0.01,
+            "unit": "kph"
+          },
+          "name": "Vehicle Speed (Speedometer)"
+        }
+      ]
+    }
+  ]
+}

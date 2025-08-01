@@ -18,6 +18,45 @@
                 "panel": "new"
             },
             "group": "test"
+        },
+        {
+            "label": "Test 2005 997 Data",
+            "type": "shell",
+            "command": "python",
+            "args": ["tests/test_responses.py", "--year", "2005", "--verbose"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Test All Years",
+            "type": "shell",
+            "command": "python",
+            "args": ["tests/test_responses.py", "--verbose"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Update Test Cases",
+            "type": "shell",
+            "command": "python",
+            "args": ["tests/update_yaml_tests.py", "--dry-run", "--verbose"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
         }
     ],
     "inputs": [

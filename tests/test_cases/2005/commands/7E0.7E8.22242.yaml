@@ -1,0 +1,43 @@
+# Engine RPM and Throttle Position Test Cases
+# PID: 0x242 (578 decimal)
+# Command: 7E0 22 24 22
+# Response: 7E8 62 24 22 [data]
+
+test_cases:
+  - name: "Engine RPM - Idle"
+    request: "7E0 22 24 22"
+    response: "7E8 62 24 22 00 00 00 00 00 00 00 00"
+    expected:
+      engine_rpm: 0
+      throttle_actual: 0.0
+      unit: "rpm, percent"
+
+  - name: "Engine RPM - 2000 RPM"
+    request: "7E0 22 24 22"
+    response: "7E8 62 24 22 20 1F 00 00 00 00 00 00"
+    expected:
+      engine_rpm: 2000
+      throttle_actual: 0.0
+      unit: "rpm, percent"
+
+  - name: "Engine RPM - 6000 RPM with Throttle"
+    request: "7E0 22 24 22"
+    response: "7E8 62 24 22 80 5E 00 00 00 80 00 00"
+    expected:
+      engine_rpm: 6000
+      throttle_actual: 50.2
+      unit: "rpm, percent"
+
+  - name: "Engine RPM - Redline with Full Throttle"
+    request: "7E0 22 24 22"
+    response: "7E8 62 24 22 00 7D 00 00 00 FF 00 00"
+    expected:
+      engine_rpm: 8000
+      throttle_actual: 100.0
+      unit: "rpm, percent"
+
+notes:
+  - "Engine RPM uses bytes 2-3, little endian"
+  - "Throttle actual uses byte 5"
+  - "RPM formula: ((Byte 3 * 256) + Byte 2) / 4"
+  - "Throttle formula: Byte 5 / 255 * 100"

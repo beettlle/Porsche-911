@@ -1,0 +1,113 @@
+# Command support for 2005 Porsche 997 Carrera
+# This file documents which OBD commands are supported by the 2005 997 generation
+
+supported_commands:
+  # Standard OBD-II PIDs (Mode 01)
+  - "0100"  # PIDs supported [01-20]
+  - "0105"  # Engine Coolant Temperature
+  - "010C"  # Engine RPM
+  - "010D"  # Vehicle Speed Sensor
+  - "0111"  # Throttle Position
+  - "010F"  # Intake Air Temperature
+  - "0110"  # Mass Air Flow
+  - "0104"  # Calculated Engine Load
+  - "010E"  # Ignition Timing Advance
+  - "0106"  # Short Term Fuel Trim Bank 1
+  - "0107"  # Long Term Fuel Trim Bank 1
+  - "0114"  # O2 Sensor 1 Bank 1
+  - "0115"  # O2 Sensor 2 Bank 1
+  - "0116"  # O2 Sensor 3 Bank 1
+  - "0117"  # O2 Sensor 4 Bank 1
+  - "0118"  # O2 Sensor 5 Bank 1
+  - "0119"  # O2 Sensor 6 Bank 1
+  - "011A"  # O2 Sensor 7 Bank 1
+  - "011B"  # O2 Sensor 8 Bank 1
+  - "010B"  # Intake Manifold Absolute Pressure
+  - "0108"  # Short Term Fuel Trim Bank 2
+  - "0109"  # Long Term Fuel Trim Bank 2
+  - "011C"  # OBD Standards Compliance
+  - "011D"  # Oxygen Sensors Present
+  - "011E"  # Auxiliary Input Status
+  - "011F"  # Run Time Since Engine Start
+  - "0120"  # PIDs supported [21-40]
+  - "0121"  # Distance Traveled with MIL on
+  - "0122"  # Fuel Rail Pressure
+  - "0123"  # Fuel Rail Gauge Pressure
+  - "0124"  # O2 Sensor 1 Bank 1
+  - "0125"  # O2 Sensor 2 Bank 1
+  - "0126"  # O2 Sensor 3 Bank 1
+  - "0127"  # O2 Sensor 4 Bank 1
+  - "0128"  # O2 Sensor 5 Bank 1
+  - "0129"  # O2 Sensor 6 Bank 1
+  - "012A"  # O2 Sensor 7 Bank 1
+  - "012B"  # O2 Sensor 8 Bank 1
+  - "012C"  # Commanded EGR
+  - "012D"  # EGR Error
+  - "012E"  # Commanded Evaporative Purge
+  - "012F"  # Fuel Level Input
+  - "0130"  # Number of Warm-ups Since Codes Cleared
+  - "0131"  # Distance Traveled Since Codes Cleared
+  - "0132"  # Evap System Vapor Pressure
+  - "0133"  # Barometric Pressure
+  - "0134"  # O2 Sensor 1 Bank 2
+  - "0135"  # O2 Sensor 2 Bank 2
+  - "0136"  # O2 Sensor 3 Bank 2
+  - "0137"  # O2 Sensor 4 Bank 2
+  - "0138"  # O2 Sensor 5 Bank 2
+  - "0139"  # O2 Sensor 6 Bank 2
+  - "013A"  # O2 Sensor 7 Bank 2
+  - "013B"  # O2 Sensor 8 Bank 2
+  - "013C"  # Catalyst Temperature Bank 1 Sensor 1
+  - "013D"  # Catalyst Temperature Bank 2 Sensor 1
+  - "013E"  # Catalyst Temperature Bank 1 Sensor 2
+  - "013F"  # Catalyst Temperature Bank 2 Sensor 2
+  - "0140"  # PIDs supported [41-60]
+  - "0141"  # Monitor Status This Drive Cycle
+  - "0142"  # Control Module Voltage
+  - "0143"  # Absolute Load Value
+  - "0144"  # Fuel/Air Commanded Equivalence Ratio
+  - "0145"  # Relative Throttle Position
+  - "0146"  # Ambient Air Temperature
+  - "0147"  # Absolute Throttle Position B
+  - "0148"  # Absolute Throttle Position C
+  - "0149"  # Accelerator Pedal Position D
+  - "014A"  # Accelerator Pedal Position E
+  - "014B"  # Accelerator Pedal Position F
+  - "014C"  # Commanded Throttle Actuator
+  - "014D"  # Time Run with MIL on
+  - "014E"  # Time since trouble codes cleared
+  - "014F"  # Maximum values for various parameters
+  - "0150"  # Maximum air flow rate from mass air flow sensor
+  - "0151"  # Fuel Type
+  - "0152"  # Ethanol Fuel Percentage
+  - "0153"  # Absolute Evap system Vapor Pressure
+  - "0154"  # Evap system vapor pressure
+  - "0155"  # Short term secondary oxygen sensor trim
+  - "0156"  # Long term secondary oxygen sensor trim
+  - "0157"  # Short term secondary oxygen sensor trim
+  - "0158"  # Long term secondary oxygen sensor trim
+  - "0159"  # Fuel rail absolute pressure
+  - "015A"  # Relative accelerator pedal position
+  - "015B"  # Hybrid battery pack remaining life
+  - "015C"  # Engine oil temperature
+  - "015D"  # Fuel injection timing
+  - "015E"  # Engine fuel rate
+  - "015F"  # Emission requirements to which vehicle is designed
+
+  # Porsche-specific PIDs (Mode 22)
+  - "22C2"  # Steering Angle and Rate
+  - "2214A" # Vehicle Speed (GPS)
+  - "22242" # Engine RPM and Throttle Position
+  - "22245" # Engine Coolant Temperature
+  - "22246" # Throttle Pedal Position
+  - "2224A" # Individual Wheel Speeds
+  - "22308" # Sport/Sport Plus Mode
+  - "22441" # Engine Oil Temperature
+  - "22442" # PASM Suspension Mode
+  - "2244C" # Vehicle Speed (Speedometer)
+
+notes:
+  - "2005 997 Carrera supports both standard OBD-II PIDs and Porsche-specific Mode 22 commands"
+  - "Mode 22 commands provide additional vehicle-specific data not available through standard PIDs"
+  - "Some Mode 22 PIDs may require specific access permissions or diagnostic tools"
+  - "Temperature calculations use Porsche-specific formulas that differ from standard OBD-II"
