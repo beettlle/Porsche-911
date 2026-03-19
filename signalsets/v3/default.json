@@ -1,43 +1,43 @@
 { "commands": [
 { "hdr": "7E0", "rax": "7E8", "cmd": {"21": "0C"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_997_TPMS_TEMP_1", "fmt": {"bix": 24, "len": 8, "max": 725, "mul": 3, "add": -40, "unit": "celsius" }, "name": "Tire Temperature 1"}
+    {"id": "PORSCHE_997_TPMS_TEMP_1", "fmt": {"bix": 24, "len": 8, "max": 725, "mul": 3, "add": -40, "unit": "celsius" }, "name": "Tire temperature 1"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0081"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_997_GEAR_POS_MANUAL", "fmt": {"bix": 49, "len": 4, "blsb": true, "max": 15, "unit": "scalar" }, "name": "Manual Transmission Gear Position"}
+    {"id": "PORSCHE_997_GEAR_POS_MANUAL", "fmt": {"bix": 49, "len": 4, "blsb": true, "max": 15, "unit": "scalar" }, "name": "Manual transmission gear position"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "00C2"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_STEERING_ANGLE", "fmt": { "len": 16, "max": 32767, "mul": 0.045, "unit": "degrees" }, "name": "Steering Angle"},
-    {"id": "PORSCHE_STEERING_RATE",  "fmt": { "len": 16, "max": 32767, "mul": 0.045, "unit": "unknown" }, "name": "Steering Rate of Change"}
+    {"id": "PORSCHE_STEERING_ANGLE", "fmt": {           "len": 16, "blsb": true, "max": 540,      "min": -540,              "sign": true, "unit": "degrees" }, "name": "Steering angle"},
+    {"id": "PORSCHE_STEERING_RATE",  "fmt": {"bix": 16, "len": 16, "blsb": true, "max": 14745.15,              "mul": 0.45, "sign": true, "unit": "unknown" }, "name": "Steering rate of change"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0107"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_997_OIL_PRESSURE", "fmt": {"bix": 16, "len": 8, "blsb": true, "max": 1020, "mul": 4, "unit": "kilopascal" }, "name": "Engine Oil Pressure"}
+    {"id": "PORSCHE_997_EOP", "fmt": {"bix": 16, "len": 8, "blsb": true, "max": 1020, "mul": 4, "unit": "kilopascal" }, "name": "Engine oil pressure"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "014A"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_VEHICLE_SPEED_GPS", "fmt": { "len": 16, "max": 65535, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Vehicle Speed (GPS)"}
+    {"id": "PORSCHE_VEHICLE_SPEED_NAV", "fmt": { "len": 16, "blsb": true, "max": 655.35, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Vehicle speed (navigation)"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0245"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_COOLANT_TEMP", "fmt": { "len": 8, "max": 255, "mul": 0.75, "add": -48, "unit": "celsius" }, "name": "Engine Coolant Temperature"}
+    {"id": "PORSCHE_COOLANT_TEMP", "fmt": { "len": 8, "max": 143.25, "mul": 0.75, "add": -48, "unit": "celsius" }, "name": "Engine coolant temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0246"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_THROTTLE_PEDAL", "fmt": { "len": 8, "max": 255, "mul": 0.392, "unit": "percent" }, "name": "Throttle Pedal Position"}
+    {"id": "PORSCHE_THROTTLE_PEDAL", "fmt": { "len": 8, "max": 99.96, "mul": 0.392, "unit": "percent" }, "name": "Throttle pedal position"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "024A"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_WHEEL_SPEED_LF", "fmt": { "len": 16, "max": 65535, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Wheel Speed Front Left"},
-    {"id": "PORSCHE_WHEEL_SPEED_RF", "fmt": { "len": 16, "max": 65535, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Wheel Speed Front Right"},
-    {"id": "PORSCHE_WHEEL_SPEED_LR", "fmt": { "len": 16, "max": 65535, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Wheel Speed Rear Left"},
-    {"id": "PORSCHE_WHEEL_SPEED_RR", "fmt": { "len": 16, "max": 65535, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Wheel Speed Rear Right"}
+    {"id": "PORSCHE_WHEEL_SPEED_LF", "fmt": {           "len": 16, "blsb": true, "max": 655.35, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Front left wheel speed"},
+    {"id": "PORSCHE_WHEEL_SPEED_RF", "fmt": {"bix": 16, "len": 16, "blsb": true, "max": 655.35, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Front right wheel speed"},
+    {"id": "PORSCHE_WHEEL_SPEED_LR", "fmt": {"bix": 32, "len": 16, "blsb": true, "max": 655.35, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Rear left wheel speed"},
+    {"id": "PORSCHE_WHEEL_SPEED_RR", "fmt": {"bix": 48, "len": 16, "blsb": true, "max": 655.35, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Rear right wheel speed"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0308"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_SPORT_MODE", "name": "Sport/Sport Plus Mode", "fmt": {"len": 64, "map": {
+    {"id": "PORSCHE_SPORT_MODE", "name": "Sport/Sport plus mode", "fmt": {"len": 64, "map": {
           "0": { "description": "Both Sport and Sport Plus modes are off", "value": "Both Off" },
           "1": { "description": "Sport mode is active",                    "value": "Sport" },
           "2": { "description": "Sport Plus mode is active",               "value": "Sport Plus" }
@@ -46,64 +46,64 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0441"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_OIL_TEMP", "fmt": { "len": 8, "max": 255, "add": -60, "unit": "celsius" }, "name": "Engine Oil Temperature"}
+    {"id": "PORSCHE_OIL_TEMP", "fmt": { "len": 8, "max": 195, "add": -60, "unit": "celsius" }, "name": "Engine oil temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0442"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_PASM_MODE", "name": "PASM Suspension Mode", "fmt": {"len": 32, "map": {
-          "0": { "description": "PASM suspension in soft mode",  "value": "Soft" },
-          "1": { "description": "PASM suspension in sport mode", "value": "Sport" }
+    {"id": "PORSCHE_PASM_MODE", "name": "Active suspension management mode", "fmt": {"len": 32, "map": {
+          "0": { "description": "Adaptive suspension in soft mode",  "value": "Soft" },
+          "1": { "description": "Adaptive suspension in sport mode", "value": "Sport" }
         }}
     }
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "044C"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_VEHICLE_SPEED_SPEEDO", "fmt": { "len": 16, "max": 65535, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Vehicle Speed (Speedometer)"}
+    {"id": "PORSCHE_VEHICLE_SPEED_SPEEDO", "fmt": { "len": 16, "blsb": true, "max": 655.35, "mul": 0.01, "unit": "kilometersPerHour" }, "name": "Vehicle speed (speedometer)"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0939"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_997_GENERATOR_MONITOR", "fmt": {"bix": 24, "len": 8, "max": 25.5, "mul": 0.1, "unit": "volts" }, "name": "Alternator/Generator Monitor"}
+    {"id": "PORSCHE_997_GENERATOR_MONITOR", "fmt": {"bix": 24, "len": 8, "max": 25.5, "mul": 0.1, "unit": "volts" }, "name": "Alternator/Generator monitor"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "096E"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_997_DESIRED_RPM", "fmt": {"bix": 24, "len": 16, "max": 16384, "mul": 0.25, "unit": "rpm" }, "name": "Engine Desired RPM"}
+    {"id": "PORSCHE_997_DESIRED_RPM", "fmt": {"bix": 24, "len": 16, "blsb": true, "max": 16383.75, "mul": 0.25, "unit": "rpm" }, "name": "Engine desired RPM"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "1101"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_997_GEAR_STATUS", "fmt": {"bix": 24, "len": 8, "max": 255, "unit": "scalar" }, "name": "Active Gear Status"}
+    {"id": "PORSCHE_997_GEAR_STATUS", "fmt": {"bix": 24, "len": 8, "max": 255, "unit": "scalar" }, "name": "Active gear status"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "1624"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_997_CYLINDER_TEMP", "fmt": {"bix": 24, "len": 8, "max": 215, "add": -40, "unit": "celsius" }, "name": "Engine Cylinder Temperature"}
+    {"id": "PORSCHE_997_CYLINDER_TEMP", "fmt": {"bix": 24, "len": 8, "max": 215, "add": -40, "unit": "celsius" }, "name": "Engine cylinder temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "2422"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_ENGINE_RPM",      "fmt": {           "len": 16, "blsb": true, "max": 65535,               "mul": 0.25,                   "unit": "rpm" },                                    "name": "Engine RPM"},
-    {"id": "PORSCHE_THROTTLE_ACTUAL", "fmt": {"bix": 40, "len": 8,  "max": 255,                 "mul": 0.392,              "unit": "percent" },            "name": "Throttle Position (Actual)"}
+    {"id": "PORSCHE_ENGINE_RPM",      "fmt": {           "len": 16, "blsb": true, "max": 16383.75,               "mul": 0.25,                   "unit": "rpm" },                                    "name": "Engine RPM"},
+    {"id": "PORSCHE_THROTTLE_ACTUAL", "fmt": {"bix": 40, "len": 8,  "max": 99.96,                  "mul": 0.392,              "unit": "percent" },            "name": "Throttle position (actual)"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F40D"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_VSS", "fmt": { "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Vehicle Speed Sensor"}
+    {"id": "PORSCHE_VSS", "fmt": { "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Vehicle speed sensor"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F41F"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_RUNTM", "fmt": { "len": 16, "max": 65535, "unit": "seconds" }, "name": "Run Time Since Engine Start"}
+    {"id": "PORSCHE_RUNTM", "fmt": { "len": 16, "max": 65535, "unit": "seconds" }, "name": "Run time since engine start"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F421"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_MIL_DIST", "fmt": { "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Distance Traveled with MIL on"}
+    {"id": "PORSCHE_MIL_DIST", "fmt": { "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Distance traveled with MIL on"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F430"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_WARM_UPS", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Warm-ups Since Codes Cleared"}
+    {"id": "PORSCHE_WARM_UPS", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Warm-ups since codes cleared"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F431"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_CLR_DIST", "fmt": { "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Clear Distance"}
+    {"id": "PORSCHE_CLR_DIST", "fmt": { "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Clear distance"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F442"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_VPWR", "fmt": { "len": 16, "max": 65535, "mul": 0.001, "unit": "volts" }, "name": "Vehicle Power"}
+    {"id": "PORSCHE_VPWR", "fmt": { "len": 16, "max": 65.535, "mul": 0.001, "unit": "volts" }, "name": "Vehicle power"}
   ]}
 ]
 }
