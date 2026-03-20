@@ -52,9 +52,12 @@ This repository focuses on Porsche-specific diagnostic data:
 - **Celsius**: (x - 64) × 3/4
 - **Fahrenheit**: (x - 64) × 27/20 + 32
 
-### Oil Temperature (PID 0x441)
-- **Celsius**: x - 60
-- **Fahrenheit**: (x - 60) × 9/5 + 32
+### Oil Temperature (PID 0x441 / UDS DID 0x0441)
+- **997.1 (ME7.x) Celsius**: (x × 3/4) − 48 (same linearization family as coolant)
+- **997.2 Celsius**: x − 60
+- **Fahrenheit**: convert from the appropriate °C line above with °F = °C × 9/5 + 32
+
+The signalset exposes both decodes as separate signals on the same DID (`PORSCHE_OIL_TEMP` for 997.1, `PORSCHE_OIL_TEMP_997_2` for 997.2).
 
 ## Testing
 

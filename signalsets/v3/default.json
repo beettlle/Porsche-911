@@ -9,8 +9,8 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "00C2"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_STEERING_ANGLE", "fmt": {           "len": 16, "blsb": true, "max": 540,      "min": -540,              "sign": true, "unit": "degrees" }, "name": "Steering angle"},
-    {"id": "PORSCHE_STEERING_RATE",  "fmt": {"bix": 16, "len": 16, "blsb": true, "max": 14745.15,              "mul": 0.45, "sign": true, "unit": "unknown" }, "name": "Steering rate of change"}
+    {"id": "PORSCHE_STEERING_ANGLE", "fmt": {           "len": 16, "blsb": true, "max": 540,      "min": -540, "mul": 0.045, "sign": true, "unit": "degrees"          }, "name": "Steering angle"},
+    {"id": "PORSCHE_STEERING_RATE",  "fmt": {"bix": 16, "len": 16, "blsb": true, "max": 1474.515,              "mul": 0.045, "sign": true, "unit": "degreesPerSecond" }, "name": "Steering rate of change"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0107"}, "freq": 0.1,
   "signals": [
@@ -22,11 +22,11 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0245"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_COOLANT_TEMP", "fmt": { "len": 8, "max": 143.25, "mul": 0.75, "add": -48, "unit": "celsius" }, "name": "Engine coolant temperature"}
+    {"id": "PORSCHE_COOLANT_TEMP", "fmt": {"bix": 8, "len": 8, "max": 143.25, "mul": 0.75, "add": -48, "unit": "celsius" }, "name": "Engine coolant temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0246"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_THROTTLE_PEDAL", "fmt": { "len": 8, "max": 99.96, "mul": 0.392, "unit": "percent" }, "name": "Throttle pedal position"}
+    {"id": "PORSCHE_THROTTLE_PEDAL", "fmt": {"bix": 24, "len": 8, "max": 99.96, "mul": 0.392, "unit": "percent" }, "name": "Throttle pedal position"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "024A"}, "freq": 0.1,
   "signals": [
@@ -37,24 +37,23 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0308"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_SPORT_MODE", "name": "Sport/Sport plus mode", "fmt": {"len": 64, "map": {
-          "0": { "description": "Both Sport and Sport Plus modes are off", "value": "Both Off" },
-          "1": { "description": "Sport mode is active",                    "value": "Sport" },
-          "2": { "description": "Sport Plus mode is active",               "value": "Sport Plus" }
-        }}
-    }
+    {"id": "PORSCHE_SPORT_308_B0", "fmt": {           "len": 8, "max": 255, "unit": "scalar" }, "name": "Sport chassis PID 0x308 byte 0 (pattern: e.g. 0x80/0x90 off, 0xA0/0xB0 Sport on 997.1)"},
+    {"id": "PORSCHE_SPORT_308_B1", "fmt": {"bix": 8,  "len": 8, "max": 255, "unit": "scalar" }, "name": "Sport chassis PID 0x308 byte 1 (e.g. headlight bit on some 997.2 dumps)"},
+    {"id": "PORSCHE_SPORT_308_B2", "fmt": {"bix": 16, "len": 8, "max": 255, "unit": "scalar" }, "name": "Sport chassis PID 0x308 byte 2"},
+    {"id": "PORSCHE_SPORT_308_B3", "fmt": {"bix": 24, "len": 8, "max": 255, "unit": "scalar" }, "name": "Sport chassis PID 0x308 byte 3"},
+    {"id": "PORSCHE_SPORT_308_B4", "fmt": {"bix": 32, "len": 8, "max": 255, "unit": "scalar" }, "name": "Sport chassis PID 0x308 byte 4"},
+    {"id": "PORSCHE_SPORT_308_B5", "fmt": {"bix": 40, "len": 8, "max": 255, "unit": "scalar" }, "name": "Sport chassis PID 0x308 byte 5"},
+    {"id": "PORSCHE_SPORT_308_B6", "fmt": {"bix": 48, "len": 8, "max": 255, "unit": "scalar" }, "name": "Sport chassis PID 0x308 byte 6"},
+    {"id": "PORSCHE_SPORT_308_B7", "fmt": {"bix": 56, "len": 8, "max": 255, "unit": "scalar" }, "name": "Sport chassis PID 0x308 byte 7"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0441"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_OIL_TEMP", "fmt": { "len": 8, "max": 195, "add": -60, "unit": "celsius" }, "name": "Engine oil temperature"}
+    {"id": "PORSCHE_OIL_TEMP",       "fmt": {"bix": 40, "len": 8, "max": 143.25, "mul": 0.75, "add": -48, "unit": "celsius" }, "name": "Engine oil temperature (997.1 ME7: 0.75*x-48 °C, byte 5 of payload)"},
+    {"id": "PORSCHE_OIL_TEMP_997_2", "fmt": {"bix": 40, "len": 8, "max": 195,                 "add": -60, "unit": "celsius" }, "name": "Engine oil temperature 997.2 Siemens decode (x-60 °C, same byte)"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "0442"}, "freq": 0.1,
   "signals": [
-    {"id": "PORSCHE_PASM_MODE", "name": "Active suspension management mode", "fmt": {"len": 32, "map": {
-          "0": { "description": "Adaptive suspension in soft mode",  "value": "Soft" },
-          "1": { "description": "Adaptive suspension in sport mode", "value": "Sport" }
-        }}
-    }
+    {"id": "PORSCHE_PASM_442_RAW", "fmt": { "len": 32, "blsb": true, "max": 4294967295, "unit": "scalar" }, "name": "PASM PID 0x442 first 4 bytes LE (e.g. 0x000000A2 soft, 0x000000B3 sport per community)"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "044C"}, "freq": 0.1,
   "signals": [
@@ -81,9 +80,53 @@
     {"id": "PORSCHE_ENGINE_RPM",      "fmt": {           "len": 16, "blsb": true, "max": 16383.75,               "mul": 0.25,                   "unit": "rpm" },                                    "name": "Engine RPM"},
     {"id": "PORSCHE_THROTTLE_ACTUAL", "fmt": {"bix": 40, "len": 8,  "max": 99.96,                  "mul": 0.392,              "unit": "percent" },            "name": "Throttle position (actual)"}
   ]},
+{ "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F404"}, "freq": 0.1,
+  "signals": [
+    {"id": "PORSCHE_997_OBD_LOAD_F404", "fmt": { "len": 8, "max": 100, "mul": 0.3921568627, "unit": "percent" }, "name": "SAE PID 0x04 calculated load via UDS DID F404 (A*100/255)"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F405"}, "freq": 0.1,
+  "signals": [
+    {"id": "PORSCHE_997_OBD_ECT_F405", "fmt": { "len": 8, "max": 215, "add": -40, "unit": "celsius" }, "name": "SAE PID 0x05 coolant via DID F405 (A-40 °C)"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F406"}, "freq": 0.1,
+  "signals": [
+    {"id": "PORSCHE_997_OBD_STFT_B1_F406", "fmt": { "len": 8, "max": 99.2, "min": -100, "mul": 0.78125, "add": -100, "unit": "percent" }, "name": "SAE PID 0x06 ST fuel trim bank 1 via F406 ((A-128)*100/128)"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F407"}, "freq": 0.1,
+  "signals": [
+    {"id": "PORSCHE_997_OBD_LTFT_B1_F407", "fmt": { "len": 8, "max": 99.2, "min": -100, "mul": 0.78125, "add": -100, "unit": "percent" }, "name": "SAE PID 0x07 LT fuel trim bank 1 via F407"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F408"}, "freq": 0.1,
+  "signals": [
+    {"id": "PORSCHE_997_OBD_STFT_B2_F408", "fmt": { "len": 8, "max": 99.2, "min": -100, "mul": 0.78125, "add": -100, "unit": "percent" }, "name": "SAE PID 0x08 ST fuel trim bank 2 via F408"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F409"}, "freq": 0.1,
+  "signals": [
+    {"id": "PORSCHE_997_OBD_LTFT_B2_F409", "fmt": { "len": 8, "max": 99.2, "min": -100, "mul": 0.78125, "add": -100, "unit": "percent" }, "name": "SAE PID 0x09 LT fuel trim bank 2 via F409"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F40A"}, "freq": 0.1,
+  "signals": [
+    {"id": "PORSCHE_997_OBD_FUEL_PRESS_F40A", "fmt": { "len": 8, "max": 765, "mul": 3, "unit": "kilopascal" }, "name": "SAE PID 0x0A fuel pressure via F40A (A*3 kPa, gauge)"}
+  ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F40D"}, "freq": 0.1,
   "signals": [
     {"id": "PORSCHE_VSS", "fmt": { "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Vehicle speed sensor"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F40E"}, "freq": 0.1,
+  "signals": [
+    {"id": "PORSCHE_997_OBD_TIMING_F40E", "fmt": { "len": 8, "max": 63.5, "min": -64, "mul": 0.5, "add": -64, "unit": "degrees" }, "name": "SAE PID 0x0E timing advance via F40E ((A-128)/2 °)"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F40F"}, "freq": 0.1,
+  "signals": [
+    {"id": "PORSCHE_997_OBD_IAT_F40F", "fmt": { "len": 8, "max": 215, "add": -40, "unit": "celsius" }, "name": "SAE PID 0x0F intake air temp via F40F (A-40 °C)"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F410"}, "freq": 0.1,
+  "signals": [
+    {"id": "PORSCHE_997_OBD_MAF_F410", "fmt": { "len": 16, "max": 655.35, "mul": 0.01, "unit": "gramsPerSecond" }, "name": "SAE PID 0x10 MAF via F410 ((256*A+B)/100 g/s, big-endian)"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F411"}, "freq": 0.1,
+  "signals": [
+    {"id": "PORSCHE_997_OBD_TPS_F411", "fmt": { "len": 8, "max": 100, "mul": 0.3921568627, "unit": "percent" }, "name": "SAE PID 0x11 absolute throttle via F411 (A*100/255)"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "cmd": {"22": "F41F"}, "freq": 0.1,
   "signals": [
